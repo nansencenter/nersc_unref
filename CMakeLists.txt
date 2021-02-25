@@ -17,7 +17,7 @@ quadSplash.cpp vertexFilter.cpp shp.cpp unrefTimer.cpp)
 set_target_properties(libunref PROPERTIES OUTPUT_NAME unref)
 
 add_definitions(${OPENMP_CXX_FLAGS})
-target_link_libraries(libunref m ${PROJ_LIB}) 
+target_link_libraries(libunref m ${PROJ_LIB})
 
 include(ExternalProject)
 if(EXTERNAL_LIBPROJ)
@@ -57,13 +57,11 @@ if(BUILD_EXECUTABLE)
 
   include_directories(${CMAKE_CURRENT_BINARY_DIR}/flann/src/flann/src/cpp)
   add_executable(unref main.cpp)
-  target_link_libraries(unref libunref m ${PROJ_LIB}) 
+  target_link_libraries(unref libunref m ${PROJ_LIB})
   add_dependencies(unref flann)
   if(NOT EXTERNAL_LIBPROJ)
     add_dependencies(unref proj)
   endif(NOT EXTERNAL_LIBPROJ)
 endif(BUILD_EXECUTABLE)
 
-#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -lc++abi")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
