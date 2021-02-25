@@ -18,7 +18,6 @@ resolution=$2
 lon=$3
 lat=$4
 basename=$(basename $shapefile .shp)
-tmpdir=$(mktemp -d)
 
 # Make sure $resolution is a number (e.g. not 40km)
 if [ "$resolution" -eq "$resolution" ] 2>/dev/null
@@ -37,8 +36,9 @@ then
 fi
 
 # Create the input file for unref
+tmpfile="gmsh_v3p08.msh"
 cat > $basename.unr << EOF
-output "$tmpdir/output.msh"
+output "$tmpfile"
 shp "$shapefile"
 lon $lon
 lat $lat
@@ -55,7 +55,7 @@ $drun nersc_unref unref $basename.unr
 
 # Save mesh as gmsh version 2
 $drun nansencenter/nextsim_base_dev gmsh \
-   $tmpdir/output.msh -o ${basename}_${resolution}km.msh -format msh2 -0
+   $tmpfile -o ${basename}_${resolution}km.msh -format msh2 -0
 
 # Clean
-rm -rf $tmpdir
+rm $tmpfile
