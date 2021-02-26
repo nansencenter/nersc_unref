@@ -13,7 +13,7 @@ docker build . -t nersc_unref
 Here the inputs are
 - `SHAPEFILE` should retain the .shp suffix.
 - `RESOLUTION` should be in km without a unit suffix (i.e. be an integer).
-- `LON` and `LAT` are the coordinates of a point within the domain,
+- `LON` and `LAT` are the coordinates of a point within the domain, eg.
   - Arctic: LON=0,   LAT=90
   - Fram:   LON=-10, LAT=75
   - Kara:   LON=75,  LAT=75
