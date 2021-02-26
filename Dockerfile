@@ -28,7 +28,7 @@ RUN git checkout 49951c2 \
 &&  mv unref /opt/local/bin
 
 # clean
-WORKDIR /inputs
+WORKDIR /
 RUN apt-get remove -y \
     cmake \
     git \
