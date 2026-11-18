@@ -1,4 +1,4 @@
-FROM ubuntu:bionic as base
+FROM ubuntu:bionic AS base
 RUN apt-get update \
 &&  apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -7,7 +7,7 @@ RUN apt-get update \
     git \
     libproj-dev \
     make \
-&&  rm -rf /var/lib/apt/lists/* \
+&&  rm -rf /var/lib/apt/lists/*
 
 ENV CXX=g++ \
     PATH=$PATH:/opt/local/bin
